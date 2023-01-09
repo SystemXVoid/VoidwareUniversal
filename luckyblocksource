@@ -1,0 +1,404 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Voidware | LUCKY BLOCKS Battlegrounds", HidePremium = true, SaveConfig = false, ConfigFolder = "Voidware"})
+
+local Tab = Window:MakeTab({
+	Name = "LB Spawning",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Lucky Blocks"
+})
+
+Tab:AddButton({
+	Name = "Normal LB",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Super LB",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Diamond LB",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Rainbow LB",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Galaxy LB",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Automation"
+})
+
+Tab:AddButton({
+	Name = "AutoSpawn",
+	Callback = function()
+		OrionLib:MakeNotification({
+			Name = "AutoSpawn",
+			Content = "Successfully Activated, To Stop this function, Rejoin.",
+			Image = "rbxassetid://4483345998",
+			Time = 3
+		})
+
+		while true do
+			wait()
+			game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+			end
+			
+  	end    
+})
+
+
+local Tab = Window:MakeTab({
+	Name = "Movements",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddSlider({
+	Name = "Speed",
+	Min = 16,
+	Max = 120,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Walkspeed",
+	Callback = function(s)
+		_G.HackedWalkSpeed = s
+ 
+local Plrs = game:GetService("Players")
+ 
+local MyPlr = Plrs.LocalPlayer
+local MyChar = MyPlr.Character
+ 
+if MyChar then
+local Hum = MyChar.Humanoid
+Hum.Changed:connect(function()
+Hum.WalkSpeed = _G.HackedWalkSpeed
+end)
+Hum.WalkSpeed = _G.HackedWalkSpeed
+end
+ 
+ 
+MyPlr.CharacterAdded:connect(function(Char)
+MyChar = Char
+repeat wait() until Char:FindFirstChild("Humanoid")
+local Hum = Char.Humanoid
+Hum.Changed:connect(function()
+Hum.WalkSpeed = _G.HackedWalkSpeed
+end)
+Hum.WalkSpeed = _G.HackedWalkSpeed
+end)
+	end    
+})
+
+Tab:AddButton({
+	Name = "E to Fly",
+	Callback = function()
+
+		OrionLib:MakeNotification({
+			Name = "Fly",
+			Content = "Successfully Activated, To Stop the Script reset your character.",
+			Image = "rbxassetid://4483345998",
+			Time = 3
+		})
+
+repeat wait() until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Torso") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
+local mouse = game.Players.LocalPlayer:GetMouse()
+repeat wait() until mouse
+  local plr = game.Players.LocalPlayer
+  local torso = plr.Character.Torso
+  local flying = true
+  local deb = true
+  local ctrl = {f = 0, b = 0, l = 0, r = 0}
+  local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+  local maxspeed = 50
+  local speed = 0
+
+  function Fly()
+    local bg = Instance.new("BodyGyro", torso)
+    bg.P = 9e4
+    bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+    bg.cframe = torso.CFrame
+    local bv = Instance.new("BodyVelocity", torso)
+    bv.velocity = Vector3.new(0,0.1,0)
+    bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+    repeat wait()
+      if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+        speed = speed+.5+(speed/maxspeed)
+        if speed > maxspeed then
+          speed = maxspeed
+        end
+      elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+        speed = speed-1
+        if speed < 0 then
+          speed = 0
+        end
+      end
+      if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+        lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+      elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+        bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+      else
+        bv.velocity = Vector3.new(0,0.1,0)
+      end
+      bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+    until not flying
+    ctrl = {f = 0, b = 0, l = 0, r = 0}
+    lastctrl = {f = 0, b = 0, l = 0, r = 0}
+    speed = 0
+    bg:Destroy()
+    bv:Destroy()
+  end
+  mouse.KeyDown:connect(function(key)
+  if key:lower() == "e" then
+    if flying then flying = false
+  else
+    flying = true
+    Fly()
+  end
+elseif key:lower() == "w" then
+  ctrl.f = 1
+elseif key:lower() == "s" then
+  ctrl.b = -1
+elseif key:lower() == "a" then
+  ctrl.l = -1
+elseif key:lower() == "d" then
+  ctrl.r = 1
+end
+end)
+mouse.KeyUp:connect(function(key)
+if key:lower() == "w" then
+  ctrl.f = 0
+elseif key:lower() == "s" then
+  ctrl.b = 0
+elseif key:lower() == "a" then
+  ctrl.l = 0
+elseif key:lower() == "d" then
+  ctrl.r = 0
+end
+end)
+Fly()
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Utility",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Rejoin",
+	Callback = function()
+		OrionLib:MakeNotification({
+			Name = "Voidware",
+			Content = "Rejoining The Server...",
+			Image = "rbxassetid://4483345998",
+			Time = 3
+		})
+
+		local tpservice= game:GetService("TeleportService")
+		local plr = game.Players.LocalPlayer
+		
+		tpservice:Teleport(game.PlaceId, plr)
+	end
+	})
+
+	Tab:AddButton({
+		Name = "ServerHop",
+		Callback = function()
+			OrionLib:MakeNotification({
+				Name = "Voidware",
+				Content = "Trying to Locate Server...",
+				Image = "rbxassetid://4483345998",
+				Time = 10
+			})
+			wait(5)
+			OrionLib:MakeNotification({
+				Name = "Voidware",
+				Content = "Server Found! Joining..",
+				Image = "rbxassetid://4483345998",
+				Time = 10
+			})
+			local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+local File = pcall(function()
+    AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+end)
+if not File then
+    table.insert(AllIDs, actualHour)
+    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+end
+function TPReturner()
+    local Site;
+    if foundAnything == "" then
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+    else
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+    local ID = ""
+    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+        foundAnything = Site.nextPageCursor
+    end
+    local num = 0;
+    for i,v in pairs(Site.data) do
+        local Possible = true
+        ID = tostring(v.id)
+        if tonumber(v.maxPlayers) > tonumber(v.playing) then
+            for _,Existing in pairs(AllIDs) do
+                if num ~= 0 then
+                    if ID == tostring(Existing) then
+                        Possible = false
+                    end
+                else
+                    if tonumber(actualHour) ~= tonumber(Existing) then
+                        local delFile = pcall(function()
+                            delfile("NotSameServers.json")
+                            AllIDs = {}
+                            table.insert(AllIDs, actualHour)
+                        end)
+                    end
+                end
+                num = num + 1
+            end
+            if Possible == true then
+                table.insert(AllIDs, ID)
+                wait()
+                pcall(function()
+                    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                    wait()
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                end)
+                wait(4)
+            end
+        end
+    end
+end
+
+function Teleport()
+    while wait() do
+        pcall(function()
+            TPReturner()
+            if foundAnything ~= "" then
+                TPReturner()
+            end
+        end)
+    end
+end
+
+Teleport()
+
+end
+	})
+
+	Tab:AddButton({
+		Name = "Anti-Afk",
+		Callback = function()
+			OrionLib:MakeNotification({
+				Name = "Voidware",
+				Content = "Activated! You will Not be kicked after the 20 minute mark.",
+				Image = "rbxassetid://4483345998",
+				Time = 5
+			})
+
+			local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+wait(1)
+vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+end
+	})
+
+	local Section = Tab:AddSection({
+		Name = "Scripts You Might Like"
+	})
+
+	Tab:AddButton({
+		Name = "Infinite Yield",
+		Callback = function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source", true))()
+		end
+	})
+
+	Tab:AddButton({
+		Name = "Dex V3",
+		Callback = function()
+		  loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
+		  print("Executed Dex V3 by Moon")
+		end
+	})
+
+	local Tab = Window:MakeTab({
+		Name = "Visuals",
+		Icon = "rbxassetid://4483345998",
+		PremiumOnly = false
+	})
+
+	Tab:AddButton({
+		Name = "ESP",
+		Callback = function()
+			getgenv().enabled = true --Toggle on/off
+			getgenv().filluseteamcolor = false --Toggle fill color using player team color on/off
+			getgenv().outlineuseteamcolor = false --Toggle outline color using player team color on/off
+			getgenv().fillcolor = Color3.new(0, 0, 0) --Change fill color, no need to edit if using team color
+			getgenv().outlinecolor = Color3.new(1, 1, 1) --Change outline color, no need to edit if using team color
+			getgenv().filltrans = 99 --Change fill transparency
+			getgenv().outlinetrans = 0 --Change outline transparency
+			
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/zntly/highlight-esp/main/esp.lua"))()
+		  end    
+	})
+
+	local Tab = Window:MakeTab({
+		Name = "Settings",
+		Icon = "rbxassetid://4483345998",
+		PremiumOnly = false
+	})
+
+	local Section = Tab:AddSection({
+		Name = "Uninject"
+	})
+
+	Tab:AddButton({
+		Name = "Destroy GUI",
+		Callback = function()
+			OrionLib:Destroy()
+		  end    
+	})
+
+	local Tab = Window:MakeTab({
+		Name = "Credits",
+		Icon = "rbxassetid://4483345998",
+		PremiumOnly = false
+	})
+
+	Tab:AddParagraph("Script Creator","SystemXVoid (SystemXVoid#7813)")
+	Tab:AddParagraph("UI Library","Orion (Created by: Sirius)")
+	Tab:AddParagraph("Extra Credits","Some Scripts are used from Other sites like (WeAreDevs.net & V3rmillion.net)")
