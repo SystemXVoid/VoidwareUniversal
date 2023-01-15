@@ -1,1 +1,4 @@
 game.Players.LocalPlayer:Kick("You are using an Outdated version of Voidware Universal, The Current Loadstring has been sent to your clipboard.")
+
+setclipboard("loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/GameHub')))()")
+wait(100)
