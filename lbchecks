@@ -1,4 +1,0 @@
-game.Players.LocalPlayer:Kick("Voidware has detected you are using an outdated script/modules. The current loadstring has been sent to your clipboard. If you still need help, Open a ticket in the discord which is also in your clipboard.")
-
-setclipboard("loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/GameHub')))()")
-setclipboard("https://discord.com/invite/Zpz3QX9MVG")
