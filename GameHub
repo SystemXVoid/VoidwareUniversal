@@ -177,7 +177,7 @@ if game.PlaceId == 90150142249 or game.PlaceId == 11520107397 or game.PlaceId ==
 			StarterGui:SetCore("SendNotification", {Title = "Voidware Universal"; Text = "Success!"; Duration = 5; Icon = "rbxassetid://12232676813"; })
 			KeyFrame:Destroy()
 			OpenClose:Destroy()
-			loadstring(game:HttpGet("https://pastebin.com/V5V1SsvV"))()
+			loadstring(game:HttpGet("https://pastebin.com/raw/V5V1SsvV"))()
 
 		else
 			game.StarterGui:SetCore("SendNotification", {Title = "Voidware Universal"; Text = "Incorrect, Please Try Again!"; Duration = 6; Icon = "rbxassetid://12232676813"; })
