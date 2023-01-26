@@ -1,0 +1,3 @@
+print("Voidware has loaded for the supported game: Naval Warfare")
+print("Script version is: 1.3 BETA")
+print("Modules Version is: NW 1.2 BETA")
