@@ -1,3 +1,3 @@
-print("Voidware Universal has loaded to LUCKY BLOCKS Battlegrounds")
-print("Script currently loaded to V1")
-print("Modules currently loaded to 1.3")
+game.Players.LocalPlayer:Kick("Voidware has detected you are using an outdated script/modules. The current loadstring has been sent to your clipboard. Voidware Support Code: 299")
+
+setclipboard("loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/GameHub')))()")
