@@ -1,0 +1,3 @@
+print("Voidware Universal has loaded for the supported game: Doors")
+print("Modules version: DS 1.0")
+print("Script version 1.3")
