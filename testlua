@@ -2,6 +2,7 @@ if game.PlaceId == 662417684 then
 
     if not _G.MainLibrary then
     print("error callback working")
+    error("Voidware Main loadstring hasn't been loaded. Try running when the main loadstring is loaded")
     end
     
     loadstring(game:HttpGet('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/checks/lbvchecks'))()
