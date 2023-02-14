@@ -1,6 +1,6 @@
 game.StarterGui:SetCore("SendNotification", {
         Title = "Voidware Error";
-        Text = "Your current game isn't supported. View the list of the supported games in the Discord.";
+        Text = "Your current game isn't supported. View the list of the supported games in the Discord, which has been sent to the clipboard.";
         Duration = "555";
     })
 
