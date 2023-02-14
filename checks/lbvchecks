@@ -1,2 +1,1 @@
 _G.ModulesVersionOutdated = true
-error("Your Modules are outdated. Try running the latest loadstring")
