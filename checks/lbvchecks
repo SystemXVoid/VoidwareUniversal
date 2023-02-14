@@ -1,3 +1,2 @@
-print("Voidware has loaded for a supported game: Lucky Blocks")
-print("Script Version is currently on 1.3")
-print("Modules Version is currently LB 1.3 BETA")
+_G.ModulesVersionOutdated = true
+error("Your Modules are outdated. Try running the latest loadstring")
