@@ -1,3 +1,4 @@
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/checks/gamehubvchecks')))()
 _G.AnticheatBypass = true
 
 if game.PlaceId == 662417684 then
@@ -31,3 +32,9 @@ if game.PlaceId == 662417684 then
 	if game.PlaceId == 3101667897 then
 		loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/legendsofspeed')))()
 	end
+
+        if game.PlaceId == 4924922222 then
+         loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/brookhaven')))()
+end
+
+
