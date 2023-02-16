@@ -1,3 +1,7 @@
+--[[ Required as a security check
+
+_G.AnticheatBypass = true
+
 if game.PlaceId == 662417684 then
 	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/luckyblock')))()
 	end
