@@ -1,6 +1,6 @@
 game.StarterGui:SetCore("SendNotification", {
         Title = "Voidware Universal";
-        Text = "Universal is currently disabled. Check for updated at dsc.gg/voidware";
+        Text = "Universal is currently disabled. Check for updates at dsc.gg/voidware";
         Duration = "555";
     })
 
