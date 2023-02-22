@@ -1,40 +1,8 @@
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/checks/gamehubvchecks')))()
-_G.AnticheatBypass = true
+game.StarterGui:SetCore("SendNotification", {
+        Title = "Voidware Universal";
+        Text = "Universal is currently disabled. Check for updated at dsc.gg/voidware";
+        Duration = "555";
+    })
 
-if game.PlaceId == 662417684 then
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/luckyblock')))()
-	end
-	
-	if game.PlaceId == 2210085102 then
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/navalwarfare')))()
-	end
-
-	if game.PlaceId == 6403373529 then
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/slapbattles')))()
-	end
-	
-	if game.PlaceId == 11520107397 then
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/slapbattles')))()
-	end
-	
-	if game.PlaceId == 90150142249 then
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/slapbattles')))()
-	end
-
-	if game.PlaceId == 1962086868 then
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/towerofhell')))()	
-	end
-
-        if game.PlaceId == 1962086868  or game.PlaceId == 5253186791 or game.PlaceId == 7227293156 or game.PlaceId == 3582763398 or game.PlaceId == 7413234551 then
-	loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/towerofhell')))()	
-	end
-
-	if game.PlaceId == 3101667897 then
-		loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/legendsofspeed')))()
-	end
-
-        if game.PlaceId == 4924922222 then
-         loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/brookhaven')))()
+return end
 end
-
-
