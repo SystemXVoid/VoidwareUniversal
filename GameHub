@@ -4,5 +4,4 @@ game.StarterGui:SetCore("SendNotification", {
         Duration = "555";
     })
 
-return end
-end
+return
