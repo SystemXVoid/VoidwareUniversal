@@ -1,3 +1,0 @@
-game.Players.LocalPlayer:Kick("Voidware has detected you are using an outdated script/modules. The current loadstring has been sent to your clipboard. Voidware Support Code: 299")
-
-setclipboard("loadstring(game:HttpGet(('https://raw.githubusercontent.com/SystemXVoid/VoidwareUniversal/main/GameHub')))()")
